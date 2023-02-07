@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <h3>Hello World!</h3>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginPage />} />

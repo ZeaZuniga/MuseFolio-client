@@ -1,0 +1,13 @@
+.homepage {
+    background-color: lightgray;
+
+    &__header {
+        margin: 2rem 0;
+    }
+
+    .favorite-songs {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+}
