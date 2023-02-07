@@ -1,0 +1,14 @@
+// @use "./partials/fonts";
+@use "./partials/resets";
+
+body{
+    font-family: sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.bold {
+    font-weight: bold;
+}
