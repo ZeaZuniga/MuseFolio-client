@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function SongCard(props) {
   return (
-    <Link to={`${props.id}`} className="favorite-songs__link">
+    <Link to={`/${props.id}`} className="favorite-songs__link">
       <div className="favorite-songs__card">
         <img
           src={sheetmusic}
