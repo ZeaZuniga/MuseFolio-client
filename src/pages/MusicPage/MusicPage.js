@@ -1,13 +1,14 @@
+import "./MusicPage.scss";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
 
 export default function MusicPage() {
   const [songDetails, setSongDetails] = useState([]);
   const currentSong = useParams().songId;
+  const inputPress = useRef();
 
-  const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
@@ -21,24 +22,54 @@ export default function MusicPage() {
     getSongDetails();
   }, []);
 
-  const onPdfSuccess = ({ numPages }) => {
-    setNumPages(numPages);
+  useEffect(() => {
+    document.addEventListener("keydown", inputFunction);
+  }, [pageNumber]);
+
+  const inputFunction = (event) => {
+    if (event.key === "ArrowRight" || event.key === " ") {
+      changePage(1);
+    } else if (event.key === "ArrowLeft" && pageNumber > 1) {
+      changePage(-1);
+    }
+  };
+
+  const onPdfSuccess = () => {
+    setPageNumber(1);
+  };
+
+  const changePage = (num) => {
+    setPageNumber(pageNumber + num);
   };
 
   if (!songDetails.id) {
     return;
   } else {
-    console.log(songDetails.url_path);
-
     return (
-      <div>
-        <p>
-          This is the MusicPage for {songDetails.title} by
-          {songDetails.composer}!!
-        </p>
-        <Document file={songDetails.url_path} onLoadSuccess={onPdfSuccess}>
-          <Page pageNumber={pageNumber} />
+      <div className="musicpage" ref={inputPress}>
+        <Document
+          file={songDetails.url_path}
+          onLoadSuccess={onPdfSuccess}
+          className="pdf__document"
+        >
+          <Page pageNumber={pageNumber} className="pdf__page" />
         </Document>
+        <div className="document-nav">
+          <div
+            className="document-nav--left"
+            onClick={() => {
+              if (pageNumber > 1) {
+                changePage(-1);
+              }
+            }}
+          ></div>
+          <div
+            className="document-nav--right"
+            onClick={() => {
+              changePage(1);
+            }}
+          ></div>
+        </div>
       </div>
     );
   }
