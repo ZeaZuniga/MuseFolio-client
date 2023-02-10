@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
 
-export default function MusicPage() {
+export default function MusicPage({ userId }) {
   const [songDetails, setSongDetails] = useState([]);
   const currentSong = useParams().songId;
   const inputPress = useRef();
@@ -14,7 +14,12 @@ export default function MusicPage() {
   useEffect(() => {
     const getSongDetails = async () => {
       const { data } = await axios.get(
-        `http://localhost:8080/song/${currentSong}`
+        `http://localhost:8080/song/${currentSong}`,
+        {
+          params: {
+            user: userId,
+          },
+        }
       );
       setSongDetails(data[0]);
     };

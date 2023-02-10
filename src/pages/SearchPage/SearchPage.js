@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import SongCard from "../../components/SongCard/SongCard";
 
-export default function SearchPage() {
+export default function SearchPage({ userId }) {
   const formRef = useRef();
 
   const [searchResults, setSearchResults] = useState([]);
@@ -19,6 +19,7 @@ export default function SearchPage() {
     const getSearch = async () => {
       const { data } = await axios.get("http://localhost:8080/search", {
         params: {
+          user: userId,
           search: `${formRef.current.search.value}`,
         },
       });
@@ -31,7 +32,11 @@ export default function SearchPage() {
 
   const allSearch = () => {
     const getAll = async () => {
-      const { data } = await axios.get("http://localhost:8080");
+      const { data } = await axios.get("http://localhost:8080", {
+        params: {
+          user: userId,
+        },
+      });
       setSearchResults(data);
     };
 

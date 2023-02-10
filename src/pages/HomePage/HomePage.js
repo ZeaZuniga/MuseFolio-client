@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import SongCard from "../../components/SongCard/SongCard";
 import axios from "axios";
 
-export default function Homepage() {
+export default function Homepage({ userId }) {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const getFavorites = async () => {
-      const { data } = await axios.get("http://localhost:8080/favorites");
+      const { data } = await axios.get("http://localhost:8080/favorites", {
+        params: {
+          user: userId,
+        },
+      });
       setFavorites(data);
     };
 
