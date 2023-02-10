@@ -24,6 +24,9 @@ export default function MusicPage() {
 
   useEffect(() => {
     document.addEventListener("keydown", inputFunction);
+    return () => {
+      document.removeEventListener("keydown", inputFunction);
+    };
   }, [pageNumber]);
 
   const inputFunction = (event) => {
