@@ -11,7 +11,12 @@ export default function SongCard(props) {
           alt="sheet music"
           className="favorite-songs__img"
         />
-        <h3>{props.title}</h3>
+        <section className="favorite-songs__text">
+          <h3 className="favorite-songs__text--title">{props.title}</h3>
+          <h4 className="favorite-songs__text--composer">
+            By {props.composer}
+          </h4>
+        </section>
       </div>
     </Link>
   );

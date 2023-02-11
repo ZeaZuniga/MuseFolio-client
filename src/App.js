@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MusicPage from "./pages/MusicPage/MusicPage";
 import { useState } from "react";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   const [userId, setUserId] = useState(1);
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Homepage userId={userId} />} />
           <Route path="/login" element={<LoginPage />} />

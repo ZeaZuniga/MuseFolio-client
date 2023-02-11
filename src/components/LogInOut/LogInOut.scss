@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+
+.logInOut{
+    height: 4rem;
+    width: 15rem;
+    padding: 0 3.2rem;
+    background-color: $MuseAccent1;
+    color: $MuseWhite;
+    font-size: 1.7rem;
+    line-height: 2rem;
+    border: 2px solid transparent;
+    border-radius: 20px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba($MuseAccent1, 0.23);
+        border-color: $MuseAccent1;
+    }
+
+    &:active {
+        background-color: $MuseDarkAccent;
+    }
+}

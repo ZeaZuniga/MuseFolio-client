@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+
+.navbar {
+    height: 8rem;
+    width: 100%;
+    padding: 0 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    
+    &__title {
+        color: $MuseAccent1;
+        font-size: 3rem;
+    }
+
+    &__section {
+        display: flex;
+        justify-content: space-between;
+        width: 36rem;
+
+        .navbar__list {
+            width: 20rem;
+            color: $MuseAccent2;
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            .navbar__item {
+                font-size: 2rem;
+                letter-spacing: .5px;
+
+                &:hover {
+                    font-weight: bold;
+                    border-bottom: 2px solid $MuseAccent2;
+                }
+            }
+        }
+    }
+
+}

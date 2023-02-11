@@ -1,13 +1,42 @@
-.homepage {
-    background-color: lightgray;
+@use "../../styles/partials/variables" as *;
 
-    &__header {
-        margin: 2rem 0;
+.homepage {
+    color: $MuseBlack;
+    min-height: 100vh;
+    padding-top: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container{
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
+
+        .homepage__phrase {
+            margin:0 0 2rem 0;
+            font-size: 6rem;
+            width: 100%;
+            max-width: 47rem;
+            text-align: right;
+            line-height: 8rem;
+        }
+    }
+
+    .linebreak{
+        border-color: transparent;
+        width: 1rem;
+        height: 80vh;
+        margin: 0 8rem;
+        background-color: $MuseAccent2;
     }
 
     .favorite-songs {
+        width: 45%;
+        // padding-right: 10rem;
         display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
     }
 }

@@ -23,20 +23,30 @@ export default function Homepage({ userId }) {
   if (!favorites[0]) {
     return (
       <div className="homepage">
-        <LogInOut />
         <h1 className="homepage__header">Let's start practicing!</h1>
         <h3>Try uploading or favoriting some music to get started.</h3>
       </div>
     );
   } else {
     const favoritesList = favorites.map((song) => {
-      return <SongCard key={song.id} id={song.id} title={song.title} />;
+      return (
+        <SongCard
+          key={song.id}
+          id={song.id}
+          title={song.title}
+          composer={song.composer}
+        />
+      );
     });
 
     return (
       <div className="homepage">
-        <LogInOut />
-        <h1 className="homepage__header">Let's start practicing!</h1>
+        <section className="homepage__container">
+          <h1 className="homepage__phrase">
+            What song are we going to practice today?
+          </h1>
+        </section>
+        <hr className="linebreak" />
         <section className="favorite-songs">{favoritesList}</section>
       </div>
     );
