@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogInOut from "../LogInOut/LogInOut";
+import Button from "../Button/Button";
 import "./NavBar.scss";
 
 export default function NavBar() {
@@ -19,7 +19,7 @@ export default function NavBar() {
             </Link>
           </li>
         </ul>
-        <LogInOut />
+        <Button scssClass="button logInOut" buttonText="Log Out" />
       </section>
     </div>
   );

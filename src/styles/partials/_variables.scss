@@ -2,7 +2,8 @@ $MuseBlack: #2F2F2F;
 $MuseWhite: #F2F6F0;
 $MuseAccent1: #379392;
 $MuseAccent2: #A15E49;
-$MuseDarkAccent: #212738;
+$MuseAccentDark1: darken($MuseAccent1, 25);
+$MuseAccentDark2: darken($MuseAccent2, 25);
 
 $tablet: 768px;
 $desktop: 1280px;

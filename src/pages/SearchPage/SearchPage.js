@@ -2,6 +2,7 @@ import "./SearchPage.scss";
 import { useRef, useState } from "react";
 import axios from "axios";
 import SongCard from "../../components/SongCard/SongCard";
+import Button from "../../components/Button/Button";
 
 export default function SearchPage({ userId }) {
   const formRef = useRef();
@@ -46,42 +47,93 @@ export default function SearchPage({ userId }) {
   if (!searchResults[0]) {
     return (
       <div className="searchpage">
-        <h1>This is the SearchPage!!!!</h1>
-        <button onClick={allSearch}>View All</button>
-        <form onSubmit={handleSubmit} ref={formRef}>
-          <label htmlFor="input">Search by title or composer</label>
-          <input
-            type="text"
-            value={searchField}
-            placeholder="Search..."
-            onChange={handleSearchField}
-            id="search"
-          />
-          <input type="submit" />
-        </form>
+        <section className="main-section">
+          <h1 className="searchpage__phrase">Looking for that one song?</h1>
+          <form
+            onSubmit={handleSubmit}
+            id="searchForm"
+            ref={formRef}
+            className="searchpage__form"
+          >
+            <label className="form__label" htmlFor="input">
+              Try searching by title or composer
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              value={searchField}
+              placeholder="Sir Duke..."
+              onChange={handleSearchField}
+              id="search"
+            />
+          </form>
+          <div className="searchpage__button-container">
+            <input
+              type="submit"
+              className="button submit"
+              form="searchForm"
+              value="Submit"
+            />
+            <button onClick={allSearch} className="button view-all">
+              View All
+            </button>
+          </div>
+        </section>
       </div>
     );
   } else {
     const searchList = searchResults.map((song) => {
-      return <SongCard key={song.id} id={song.id} title={song.title} />;
+      return (
+        <SongCard
+          key={song.id}
+          id={song.id}
+          title={song.title}
+          composer={song.composer}
+        />
+      );
     });
 
     return (
-      <div className="searchpage">
-        <button onClick={allSearch}>View All</button>
-        <form onSubmit={handleSubmit} ref={formRef}>
-          <label htmlFor="input">Search by title or composer</label>
-          <input
-            type="text"
-            value={searchField}
-            placeholder="Search..."
-            onChange={handleSearchField}
-            id="search"
-          />
-          <input type="submit" />
-        </form>
-        <h1 className="searchpage__header">Here's your results!</h1>
-        <section className="searchpage-restults">{searchList}</section>
+      <div className="searchpage searchpage--results">
+        <section className="main-section main-section--results">
+          <h1 className="searchpage__phrase">
+            Still Looking for that one song?
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            id="searchForm"
+            ref={formRef}
+            className="searchpage__form"
+          >
+            <label className="form__label" htmlFor="input">
+              Try searching by title or composer
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              value={searchField}
+              placeholder="Sir Duke..."
+              onChange={handleSearchField}
+              id="search"
+            />
+          </form>
+          <div className="searchpage__button-container">
+            <input
+              type="submit"
+              className="button submit"
+              form="searchForm"
+              value="Submit"
+            />
+            <button onClick={allSearch} className="button view-all">
+              View All
+            </button>
+          </div>
+        </section>
+        <hr className="linebreak" />
+        <section className="results-section">
+          <h2 className="searchpage__header">Here's your results!</h2>
+          <div className="searchpage__results">{searchList}</div>
+        </section>
       </div>
     );
   }

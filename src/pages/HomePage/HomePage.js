@@ -1,4 +1,3 @@
-import LogInOut from "../../components/LogInOut/LogInOut";
 import "./HomePage.scss";
 import { useEffect, useState } from "react";
 import SongCard from "../../components/SongCard/SongCard";
