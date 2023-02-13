@@ -1,4 +1,5 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .button{
     height: 4.5rem;
@@ -10,6 +11,11 @@
     line-height: 2rem;
     border: 2px solid transparent;
     border-radius: 25px;
+
+    @include middle-design {
+        font-size: 1.8rem;
+        height: 4.5rem;
+    }
 
     &:hover {
         cursor: pointer;
@@ -24,10 +30,19 @@
     }
 }
 
-.submit {
-    background-color: $MuseAccent2;
+.view-all{
     margin: 0 1rem;
     width: 18rem;
+
+    @include middle-design {
+        width: 15rem;
+        margin: 0 .5rem
+    }
+}
+
+.submit {
+    @extend .view-all;
+    background-color: $MuseAccent2;
 
     &:hover {
         background-color: rgba($MuseAccent2, 0.23);
@@ -41,7 +56,3 @@
     }
 }
 
-.view-all{
-    margin: 0 1rem;
-    width: 18rem;
-}

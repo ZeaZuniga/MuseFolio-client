@@ -10,14 +10,6 @@
     align-items: center;
     position: absolute;
     z-index: 10;
-
-    @include middle-design {
-        background-color: rgb(151, 151, 151);
-    }
-
-    @include tablet-design {
-        background-color: aquamarine;
-    }
     
     &__title {
         color: $MuseAccent1;

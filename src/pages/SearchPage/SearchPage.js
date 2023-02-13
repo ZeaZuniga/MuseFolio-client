@@ -96,7 +96,7 @@ export default function SearchPage({ userId }) {
     return (
       <div className="searchpage searchpage--results">
         <section className="main-section main-section--results">
-          <h1 className="searchpage__phrase">
+          <h1 className="searchpage__phrase searchpage__phrase--results">
             Still Looking for that one song?
           </h1>
           <form
