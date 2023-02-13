@@ -1,4 +1,5 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .homepage {
     color: $MuseBlack;
@@ -8,18 +9,42 @@
     justify-content: center;
     align-items: center;
 
+    @include tablet-design{
+        flex-direction: column;
+        padding: 8rem 4rem 2rem 4rem;
+    }
+
     &__container{
         width: 30%;
         display: flex;
         justify-content: flex-end;
+        
+        @include tablet-design {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            padding: 12rem 0;  
+        }
 
         .homepage__phrase {
-            margin:0 0 2rem 0;
+            margin-bottom:2rem;
             font-size: 6rem;
             width: 100%;
             max-width: 47rem;
             text-align: right;
             line-height: 8rem;
+
+            @include middle-design {
+                font-size: 5rem;
+                line-height: 7rem;
+            }
+
+            @include tablet-design {
+                text-align: center;
+                max-width: 60rem;
+                margin-bottom: 0;
+            }
         }
     }
 
@@ -29,6 +54,16 @@
         height: 80vh;
         margin: 0 8rem;
         background-color: $MuseAccent2;
+
+        @include middle-design {
+            margin: 0 6rem;
+        }
+
+        @include tablet-design {
+            width: 100%;
+            height: 1rem;
+            margin-bottom: 10rem;
+        }
     }
 
     .favorite-songs {
@@ -37,5 +72,9 @@
         align-items: center;
         flex-direction: column;
         position: relative;
+
+        @include tablet-design {
+            width: 100%;
+        }
     }
 }
