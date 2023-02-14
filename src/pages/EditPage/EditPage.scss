@@ -123,6 +123,11 @@
                 background-color: rgba($MuseAccent2, 0.23);
             }
 
+            &:active {
+                background-color: rgba($MuseAccent2, 0.6);
+                color: $MuseWhite;
+            }
+
             .form__favorite--box {
                 height: 2rem;
                 width: 2rem;
@@ -135,6 +140,11 @@
 
             &:hover {
                 color: $MuseAccent2;
+            }
+
+            &:active {
+                background-color: rgba($MuseAccent2, 0.6);
+                color: $MuseWhite;
             }
         }
         

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-export default function EditPage() {
+export default function EditPage({ userId }) {
   const [title, setTitle] = useState("");
   const [composer, setComposer] = useState("");
   const [symphonic, setSymphonic] = useState(false);
@@ -19,7 +19,6 @@ export default function EditPage() {
 
   const [favorite, setFavorite] = useState(false);
   const currentSong = useParams().songId;
-  const userId = 1;
 
   useEffect(() => {
     const getSongDetails = async () => {
