@@ -1,0 +1,121 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.editpage {
+    min-height: 100vh;
+    padding: 8rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__header {
+        margin: 1rem;
+        font-size: 4rem;
+        color: $MuseBlack;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        min-width: fit-content;
+        height: fit-content;   
+        font-size: 2.2rem;
+        color: $MuseBlack;
+
+        .form__information {
+            width: fit-content;
+            display: flex;
+            padding: 2rem 0;
+
+            .form__title--label {
+                margin: 0 2rem;
+                width: 40rem;
+                display: flex;
+                flex-direction: column;
+    
+                .form__title--text{
+                    width: 100%;
+                    max-width: 40rem;
+                    height: fit-content;
+                    font-size: 2rem;
+                    line-height: 3rem;
+                    margin-top: .5rem;
+                    padding: .75rem 2rem;
+                    border-radius: 13px;
+                    border: 2px solid rgba(118,118,118,.6);
+        
+                    &:focus {
+                        border-color: $MuseAccent2;
+                        outline: none;
+                    }
+                }
+            }
+
+            .form__composer--label{
+                @extend .form__title--label;
+
+                .form__composer--text {
+                    @extend .form__title--text;
+                }
+            }
+        }
+
+        .form__checkbox--header {
+            font-size: 2.7rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form__checkbox {
+            display: flex;
+            width: 100rem;
+            height: fit-content;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            
+
+            &--label {
+                width: 30rem;
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem;
+                border-radius: 8px;
+                border: 2px solid $MuseAccent1;
+                color: $MuseAccent1;
+                margin: 1rem;
+                
+                &:hover {
+                    background-color: rgba($MuseAccent1, 0.23);
+                }
+            }
+
+            &--box {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+
+        .form__favorite--label {
+            width: 20rem;
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid $MuseAccent2;
+            color: $MuseAccent2;
+            font-weight: bold;
+
+            &:hover {
+                background-color: rgba($MuseAccent2, 0.23);
+            }
+
+            .form__favorite--box {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    }
+}

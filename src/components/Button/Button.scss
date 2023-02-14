@@ -56,3 +56,7 @@
     }
 }
 
+.edit-submit {
+    @extend .view-all;
+    width: fit-content;
+}

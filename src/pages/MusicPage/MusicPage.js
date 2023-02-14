@@ -42,7 +42,8 @@ export default function MusicPage({ userId }) {
     }
   };
 
-  const onPdfSuccess = () => {
+  const onPdfSuccess = (s) => {
+    console.log(s);
     setPageNumber(1);
   };
 
