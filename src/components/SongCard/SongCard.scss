@@ -2,48 +2,73 @@
 @use "../../styles/partials/mixins" as *;
 
 .favorite-songs{
+    position: relative;
+    width: 100%;
+    height: 14rem;
+    margin: 1rem 0;
+
+    &:hover {
+            top: -8px;
+        }
+
     &__link {
         width: 100%;
         height: fit-content;
-        margin: 1rem;
-
-        &:hover {
-            position: relative;
-            top: -8px;
+        
+        .favorite-songs__card {
+            height: 14rem;
+            background-color: $MuseAccent1;
+            display: flex;
+            color: $MuseWhite;
+            border-radius: 12px;
+            padding: 1rem;
+    
+            &:hover {
+                position: relative;
+                top: -8px;
+                background-color: $MuseAccentDark1;
+                color: $MuseWhite;
+            }
+    
+            .favorite-songs__img {
+                width: 18rem;
+                height: 12rem;
+                margin-right: 3.2rem;
+                border-radius: 10px;
+            }
+    
+            .favorite-songs__text {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+    
+                &--title {
+                    font-size: 3rem;
+                    letter-spacing: 1px;
+                }
+            }
         }
     }
 
-    &__card {
-        width: 100%;
-        height: 14rem;
-        background-color: $MuseAccent1;
+    &__edit {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        border-radius: 8px;
         display: flex;
-        color: $MuseWhite;
-        border-radius: 12px;
-        padding: 1rem;
+        justify-content: center;
+        align-items: center;
 
-        &:hover {
-            position: relative;
-            top: -8px;
-            background-color: $MuseAccentDark1;
-            color: $MuseWhite;
+        &:hover{
+            background-color: rgba($MuseWhite, .5);
         }
 
-        .favorite-songs__img {
-            width: 18rem;
-            height: 12rem;
-            margin-right: 3.2rem;
-            border-radius: 10px;
-        }
+        .edit-icon {
+            height: 3rem;
+            margin: .5rem;
 
-        .favorite-songs__text {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-
-            &--title {
-                font-size: 3rem;
-                letter-spacing: 1px;
+            @include tablet-design {
+                height: 3.5rem;
             }
         }
     }

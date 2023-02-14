@@ -48,7 +48,7 @@ export default function Homepage({ userId }) {
           </h1>
         </section>
         <hr className="linebreak" />
-        <section className="favorite-songs">{favoritesList}</section>
+        <section className="favorite-songs__container">{favoritesList}</section>
       </div>
     );
   }

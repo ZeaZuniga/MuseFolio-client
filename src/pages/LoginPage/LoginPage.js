@@ -3,8 +3,8 @@ import "./LoginPage.scss";
 import axios from "axios";
 
 export default function LoginPage({ setUserId }) {
-  const [name, setName] = useState();
-  const [pass, setPass] = useState();
+  const [name, setName] = useState("");
+  const [pass, setPass] = useState("");
 
   const nameHandler = (e) => {
     setName(e.target.value);
