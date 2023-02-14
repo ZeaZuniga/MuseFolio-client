@@ -1,7 +1,7 @@
 import Button from "../../components/Button/Button";
 import "./EditPage.scss";
 import { useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function EditPage({ userId }) {
@@ -17,6 +17,8 @@ export default function EditPage({ userId }) {
   const [classicSoul, setClassicSoul] = useState(false);
   const [studioGhibli, setStudioGhibli] = useState(false);
 
+  const [songDetails, setSongDetails] = useState({});
+
   const [favorite, setFavorite] = useState(false);
   const currentSong = useParams().songId;
 
@@ -30,44 +32,35 @@ export default function EditPage({ userId }) {
           },
         }
       );
+      setSongDetails(data[0]);
       setTitle(data[0].title);
       setComposer(data[0].composer);
-      console.log(data[0].tags);
       if (data[0].tags.includes("symphonic")) {
         setSymphonic(true);
-        console.log("what a symphony");
       }
       if (data[0].tags.includes("tuba")) {
         setTuba(true);
-        console.log("oompah");
       }
       if (data[0].tags.includes("jazz")) {
         setJazz(true);
-        console.log("jazzy");
       }
       if (data[0].tags.includes("piano")) {
         setPiano(true);
-        console.log("tickle them ivories");
       }
       if (data[0].tags.includes("romantic")) {
         setRomantic(true);
-        console.log("the era. not the mood");
       }
       if (data[0].tags.includes("self composed")) {
         setSelfComposed(true);
-        console.log("i am beethoven");
       }
       if (data[0].tags.includes("lead sheets")) {
         setLeadSheets(true);
-        console.log("i'm a gigging musician!");
       }
       if (data[0].tags.includes("classic soul")) {
         setClassicSoul(true);
-        console.log("soulful");
       }
       if (data[0].tags.includes("studio ghibli")) {
         setStudioGhibli(true);
-        console.log("there's a castle blocking the sun");
       }
 
       if (data[0].favorite === "1") {
@@ -86,21 +79,62 @@ export default function EditPage({ userId }) {
     setComposer(e.target.value);
   };
 
-  console.log({
-    symphonic: symphonic,
-    tuba: tuba,
-    piano: piano,
-    romantic: romantic,
-    "self Composed": selfComposed,
-    "lead sheets": leadSheets,
-    "Classic soul": classicSoul,
-    "Studio Ghibli": studioGhibli,
-  });
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let tagArray = [];
+
+    if (symphonic) {
+      tagArray.push("symphonic");
+    }
+    if (tuba) {
+      tagArray.push("tuba");
+    }
+    if (jazz) {
+      tagArray.push("jazz");
+    }
+    if (piano) {
+      tagArray.push("piano");
+    }
+    if (romantic) {
+      tagArray.push("romantic");
+    }
+    if (selfComposed) {
+      tagArray.push("self composed");
+    }
+    if (leadSheets) {
+      tagArray.push("lead sheets");
+    }
+    if (classicSoul) {
+      tagArray.push("classic soul");
+    }
+    if (studioGhibli) {
+      tagArray.push("studio ghibli");
+    }
+
+    const updatedObject = {
+      id: +currentSong,
+      title: title,
+      composer: composer,
+      url_path: songDetails.url_path,
+      tags: JSON.stringify(tagArray),
+      favorite: +favorite,
+    };
+
+    const sendChanges = async () => {
+      const res = await axios.put(
+        `http://localhost:8080/song/${currentSong}?user=${userId}`,
+        updatedObject
+      );
+      alert(res.data);
+    };
+
+    sendChanges();
+  };
 
   return (
     <div className="editpage">
       <h1 className="editpage__header">Need to make a change? Make it here!</h1>
-      <form className="editpage__form">
+      <form className="editpage__form" onSubmit={submitHandler}>
         <section className="form__information">
           <label className="form__title--label">
             Title:
