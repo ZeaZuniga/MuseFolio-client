@@ -21,9 +21,11 @@ export default function Homepage({ userId }) {
 
   if (!favorites[0]) {
     return (
-      <div className="homepage">
-        <h1 className="homepage__header">Let's start practicing!</h1>
-        <h3>Try uploading or favoriting some music to get started.</h3>
+      <div className="homepage-empty">
+        <h1 className="homepage-empty__phrase">Let's start practicing!</h1>
+        <h3 className="homepage-empty__suggestion">
+          Try uploading or favoriting some music to get started.
+        </h3>
       </div>
     );
   } else {

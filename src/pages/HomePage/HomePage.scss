@@ -14,6 +14,33 @@
         padding: 8rem 4rem 2rem 4rem;
     }
 
+    &-empty {
+        padding: 8rem 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $MuseBlack;
+
+        &__phrase {
+            margin-bottom:10rem;
+            font-size: 8rem;
+            width: 100%;
+            max-width: 47rem;
+            text-align: center;
+            line-height: 8rem;
+        }
+
+        &__suggestion {
+            font-size: 4rem;
+            line-height: 5rem;
+            max-width: 60rem;
+            text-align: center;
+            color: $MuseAccent2;
+        }
+    }
+
     &__container{
         width: 30%;
         display: flex;
