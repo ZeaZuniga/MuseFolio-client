@@ -74,7 +74,11 @@
             height: fit-content;
             flex-wrap: wrap;
             justify-content: space-evenly;
-            
+
+            .true {
+                background-color: $MuseAccent1;
+                color: $MuseWhite;
+            }
 
             &--label {
                 width: 30rem;
@@ -87,7 +91,13 @@
                 margin: 1rem;
                 
                 &:hover {
+                    color: $MuseAccent1;
                     background-color: rgba($MuseAccent1, 0.23);
+                }
+
+                &:active {
+                    background-color: rgba($MuseAccent1, 0.6);
+                    color: $MuseWhite;
                 }
             }
 
@@ -101,12 +111,13 @@
             width: 20rem;
             display: flex;
             justify-content: space-between;
-            margin: 2rem;
+            margin: 2rem 0 3rem 0;
             padding: 1rem;
             border-radius: 8px;
             border: 2px solid $MuseAccent2;
             color: $MuseAccent2;
             font-weight: bold;
+            
 
             &:hover {
                 background-color: rgba($MuseAccent2, 0.23);
@@ -117,5 +128,15 @@
                 width: 2rem;
             }
         }
+
+        .favorite-true{
+            background-color: $MuseAccent2;
+            color: $MuseWhite;
+
+            &:hover {
+                color: $MuseAccent2;
+            }
+        }
+        
     }
 }
