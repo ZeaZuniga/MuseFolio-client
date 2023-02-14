@@ -30,7 +30,7 @@ function App() {
             <Route
               element={
                 <>
-                  <NavBar />
+                  <NavBar setUserId={setUserId} />
                   <Outlet />
                 </>
               }

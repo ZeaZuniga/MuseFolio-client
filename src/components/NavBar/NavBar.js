@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
 import "./NavBar.scss";
 
-export default function NavBar() {
+export default function NavBar({ setUserId }) {
+  const logOut = () => {
+    setUserId(undefined);
+  };
+
   return (
     <div className="navbar">
-      <h2 className="navbar__title">MuseFolio</h2>
+      <Link to="/" className="navbar__link">
+        <h2 className="navbar__title">MuseFolio</h2>
+      </Link>
       <section className="navbar__section">
         <ul className="navbar__list">
           <li className="navbar__item">
@@ -19,7 +24,9 @@ export default function NavBar() {
             </Link>
           </li>
         </ul>
-        <Button scssClass="button logInOut" buttonText="Log Out" />
+        <button onClick={logOut} className="button logInOut">
+          Log Out
+        </button>
       </section>
     </div>
   );
