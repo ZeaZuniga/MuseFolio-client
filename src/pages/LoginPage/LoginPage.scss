@@ -1,0 +1,57 @@
+@use "../../styles/partials/variables" as *;
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+
+    &__header {
+        font-size: 5rem;
+        max-width: 60rem;
+        text-align: center;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+
+        .form__label {
+            margin: 1rem 0;
+            width: 40rem;
+            display: flex;
+            flex-direction: column;
+
+            &--input{
+                width: 100%;
+                max-width: 40rem;
+                height: fit-content;
+                font-size: 2rem;
+                line-height: 3rem;
+                margin-top: .4rem;
+                padding: .75rem 2rem;
+                border-radius: 13px;
+                border: 2px solid rgba(118,118,118,.6);
+    
+                &:focus {
+                    border-color: $MuseAccent2;
+                    outline: none;
+                }
+            }
+        }
+
+        .submit {
+            margin: 2rem;
+        }
+    }
+
+    &__disclaimer {
+        position: absolute;
+        bottom: 2rem;
+    }
+}

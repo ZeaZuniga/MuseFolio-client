@@ -14,34 +14,42 @@ import { useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 
 function App() {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUserId] = useState();
 
-  return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route
-            element={
-              <>
-                <NavBar />
-                <Outlet />
-              </>
-            }
-          >
-            <Route path="/" element={<Homepage userId={userId} />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/search" element={<SearchPage userId={userId} />} />
+  if (!userId) {
+    return (
+      <div className="App">
+        <LoginPage setUserId={setUserId} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        <Router>
+          <Routes>
             <Route
-              path="/:songId/edit"
-              element={<EditPage userId={userId} />}
-            />
-          </Route>
+              element={
+                <>
+                  <NavBar />
+                  <Outlet />
+                </>
+              }
+            >
+              <Route path="/" element={<Homepage userId={userId} />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/search" element={<SearchPage userId={userId} />} />
+              <Route
+                path="/:songId/edit"
+                element={<EditPage userId={userId} />}
+              />
+            </Route>
 
-          <Route path="/:songId" element={<MusicPage userId={userId} />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+            <Route path="/:songId" element={<MusicPage userId={userId} />} />
+          </Routes>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
