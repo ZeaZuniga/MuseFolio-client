@@ -1,15 +1,25 @@
 import "./MusicPage.scss";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
+import menu from "../../assets/images/menu.svg";
 
 export default function MusicPage({ userId }) {
+  const [navDisplay, setNavDisplay] = useState("hidden");
   const [songDetails, setSongDetails] = useState([]);
   const currentSong = useParams().songId;
   const inputPress = useRef();
 
   const [pageNumber, setPageNumber] = useState(1);
+
+  const toggleNav = () => {
+    if (navDisplay === "hidden") {
+      setNavDisplay("visible");
+    } else if (navDisplay === "visible") {
+      setNavDisplay("hidden");
+    }
+  };
 
   useEffect(() => {
     const getSongDetails = async () => {
@@ -56,6 +66,28 @@ export default function MusicPage({ userId }) {
   } else {
     return (
       <div className="musicpage" ref={inputPress}>
+        <section className="navMenu">
+          <div className="navMenu__icon-wrapper" onClick={toggleNav}>
+            <img className="navMenu__icon" src={menu} alt="Menu Icon" />
+          </div>
+          <ul className={`navMenu__list ${navDisplay}`}>
+            <li className="navMenu__item">
+              <Link to="/" className="navMenu__link">
+                Home
+              </Link>
+            </li>
+            <li className="navMenu__item">
+              <Link to="/search" className="navMenu__link">
+                Search
+              </Link>
+            </li>
+            <li className="navMenu__item">
+              <Link to={`/${currentSong}/edit`} className="navMenu__link">
+                Edit Song
+              </Link>
+            </li>
+          </ul>
+        </section>
         <Document
           file={songDetails.url_path}
           onLoadSuccess={onPdfSuccess}

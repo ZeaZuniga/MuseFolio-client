@@ -1,3 +1,5 @@
+@use "../../styles/partials/variables" as *;
+
 .textLayer,
 .annotationLayer,
 .react-pdf__Page__canvas {
@@ -7,6 +9,50 @@
 .musicpage {
     position: relative;
     height: fit-content;
+
+    .navMenu{
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 10;
+
+        &__icon-wrapper{
+            border-radius: 5px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: fit-content;
+
+            &:active{
+                background-color: rgba($MuseAccent1, .25);
+            }
+        }
+
+        &__icon{
+            height: 3rem;
+            
+        }
+
+        &__list {
+            width: fit-content;
+            color: $MuseAccent2;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+
+            .navMenu__item {
+                font-size: 2rem;
+                letter-spacing: .5px;
+
+                &:hover {
+                    font-weight: bold;
+                    border-bottom: 2px solid $MuseAccent2;
+                }
+            }
+        }
+    }
 
     .pdf__page {
         display: flex;
