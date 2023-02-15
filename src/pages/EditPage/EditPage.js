@@ -1,6 +1,6 @@
 import Button from "../../components/Button/Button";
 import "./EditPage.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -16,11 +16,13 @@ export default function EditPage({ userId }) {
   const [leadSheets, setLeadSheets] = useState(false);
   const [classicSoul, setClassicSoul] = useState(false);
   const [studioGhibli, setStudioGhibli] = useState(false);
+  const [favorite, setFavorite] = useState(false);
 
   const [songDetails, setSongDetails] = useState({});
 
-  const [favorite, setFavorite] = useState(false);
   const currentSong = useParams().songId;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSongDetails = async () => {
@@ -126,6 +128,7 @@ export default function EditPage({ userId }) {
         updatedObject
       );
       alert(res.data);
+      navigate(`/${currentSong}`);
     };
 
     sendChanges();
