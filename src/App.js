@@ -44,7 +44,10 @@ function App() {
               />
             </Route>
 
-            <Route path="/:songId" element={<MusicPage userId={userId} />} />
+            <Route
+              path="/:songId"
+              element={<MusicPage userId={userId} setUserId={setUserId} />}
+            />
           </Routes>
         </Router>
       </div>

@@ -4,14 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
 import menu from "../../assets/images/menu.svg";
+import NavBar from "../../components/NavBar/NavBar";
 
-export default function MusicPage({ userId }) {
+export default function MusicPage({ userId, setUserId }) {
   const [navDisplay, setNavDisplay] = useState("hidden");
   const [songDetails, setSongDetails] = useState([]);
   const currentSong = useParams().songId;
   const inputPress = useRef();
 
   const [pageNumber, setPageNumber] = useState(1);
+
+  const logOut = () => {
+    setUserId(undefined);
+  };
 
   const toggleNav = () => {
     if (navDisplay === "hidden") {
@@ -66,6 +71,33 @@ export default function MusicPage({ userId }) {
   } else {
     return (
       <div className="musicpage" ref={inputPress}>
+        <div className="navbar">
+          <Link to="/" className="navbar__link">
+            <h2 className="navbar__title">MuseFolio</h2>
+          </Link>
+          <section className="navbar__section">
+            <ul className="navbar__list">
+              <li className="navbar__item">
+                <Link to="/" className="navbar__link">
+                  Home
+                </Link>
+              </li>
+              <li className="navbar__item">
+                <Link to="/search" className="navbar__link">
+                  Search
+                </Link>
+              </li>
+              <li className="navbar__item">
+                <Link to={`/${currentSong}/edit`} className="navbar__link">
+                  Edit Song
+                </Link>
+              </li>
+            </ul>
+            <button onClick={logOut} className="button logInOut">
+              Log Out
+            </button>
+          </section>
+        </div>
         <section className="navMenu">
           <div className="navMenu__icon-wrapper" onClick={toggleNav}>
             <img className="navMenu__icon" src={menu} alt="Menu Icon" />
