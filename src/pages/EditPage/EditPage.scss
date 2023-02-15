@@ -2,17 +2,29 @@
 @use "../../styles/partials/mixins" as *;
 
 .editpage {
-    min-height: 100vh;
+    height: 100vh;
     padding: 8rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
+    @include middle-design{
+        padding-bottom: 2rem;
+    }
+
+    @include tablet-design {
+        height: fit-content;
+    }
+
     &__header {
-        margin: 1rem;
+        margin-bottom: 1rem;
         font-size: 4rem;
         color: $MuseBlack;
+
+        @include middle-design{
+            font-size: 3.6rem;
+        }
     }
 
     &__form {
@@ -25,16 +37,36 @@
         font-size: 2.2rem;
         color: $MuseBlack;
 
+        @include middle-design{
+            font-size: 2rem;
+        }
+
         .form__information {
             width: fit-content;
             display: flex;
             padding: 2rem 0;
+
+            @include tablet-design {
+                flex-direction: column;
+                align-items: center;
+                padding: 0;
+                padding-bottom: 2rem;
+            }
 
             .form__title--label {
                 margin: 0 2rem;
                 width: 40rem;
                 display: flex;
                 flex-direction: column;
+
+                @include middle-design{
+                    width: 32rem;
+                }
+
+                @include tablet-design {
+                    width: 50rem;
+                    margin: 1rem 0;
+                }
     
                 .form__title--text{
                     width: 100%;
@@ -51,6 +83,10 @@
                         border-color: $MuseAccent2;
                         outline: none;
                     }
+
+                    @include tablet-design {
+                        max-width: none
+                    }
                 }
             }
 
@@ -66,6 +102,10 @@
         .form__checkbox--header {
             font-size: 2.7rem;
             margin-bottom: 1rem;
+
+            @include middle-design{
+                font-size: 2.4rem;
+            }
         }
         
         .form__checkbox {
@@ -74,6 +114,15 @@
             height: fit-content;
             flex-wrap: wrap;
             justify-content: space-evenly;
+
+            @include middle-design{
+                width: 80rem;
+            }
+
+            @include tablet-design {
+                width: 100%;
+                max-width: 98rem;
+            }
 
             .true {
                 background-color: $MuseAccent1;
@@ -98,6 +147,15 @@
                 &:active {
                     background-color: rgba($MuseAccent1, 0.6);
                     color: $MuseWhite;
+                }
+
+                @include middle-design {
+                    width: 24rem;
+                }
+
+                @include tablet-design {
+                    width: 30rem;
+                    margin: 1.5rem;
                 }
             }
 
