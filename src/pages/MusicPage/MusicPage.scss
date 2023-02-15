@@ -63,7 +63,7 @@
         left: 2rem;
         z-index: 10;
         background-color: $MuseWhite;
-        border: 2px solid $MuseAccent1;
+        border: 2px solid $MuseAccent2;
         border-radius: 1rem;
         display: none;
         align-items: center;
@@ -81,7 +81,7 @@
             padding: .5rem;
 
             &:active{
-                background-color: rgba($MuseAccent1, .25);
+                background-color: rgba($MuseAccent2, .25);
             }
         }
 
@@ -92,7 +92,7 @@
 
         &__list {
             width: 30rem;
-            color: $MuseAccent1;
+            color: $MuseAccent2;
             list-style: none;
             display: flex;
             align-items: center;
@@ -103,7 +103,7 @@
                 letter-spacing: .5px;
 
                 &:active{
-                    background-color: rgba($MuseAccent1, .25);
+                    background-color: rgba($MuseAccent2, .25);
                 }
             }
         }
